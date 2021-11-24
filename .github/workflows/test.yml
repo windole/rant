@@ -59,7 +59,7 @@ jobs:
           node-version: '16'
 
       - name: Test     
-        run: lerna exec --scope rc-ui-lib sudo yarn test
+        run: yarn test
       
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
