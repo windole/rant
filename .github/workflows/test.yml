@@ -34,12 +34,9 @@ jobs:
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn
-  test-cli:
-    name: Testing @zarm-design/cli on Node.js
+  test:
+    name: Testing and Coverage
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14, 12, 10]
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -55,8 +52,14 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Restore cli
+        uses: actions/cache@v2
+        with:
+          path: packages/rc-cli/lib
+          key: ${{ runner.os }}-cli-${{ github.sha }}
+
       - name: Test
-        run: yarn test
+        run: lerna exec --scope rc-ui-lib yarn test
       
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
