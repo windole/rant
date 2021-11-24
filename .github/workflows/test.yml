@@ -33,7 +33,7 @@ jobs:
 
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn
+        run: yarn bootstrap
   test:
     name: Testing and Coverage
     runs-on: ubuntu-latest
