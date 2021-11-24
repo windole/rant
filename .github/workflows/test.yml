@@ -30,8 +30,6 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
-      - name: whereis node
-        run: whereis node
         
       - name: Install
         run: yarn bootstrap
@@ -84,7 +82,9 @@ jobs:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
           node-version: '16'
-
+      - name: change node
+        run: sudo ln -s /usr/local/bin/node /usr/bin/node
+        
       - name: Test     
         run: yarn test
       
