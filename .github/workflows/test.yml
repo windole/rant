@@ -82,6 +82,8 @@ jobs:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
           node-version: '16'
+      - name: unlink node 
+        run: sudo unlink /usr/bin/node
       - name: change node
         run: sudo ln -s /usr/local/bin/node /usr/bin/node
         
