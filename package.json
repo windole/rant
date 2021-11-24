@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare": "yarn build:cli && yarn build:linter",
+    "bootstrap": "lerna bootstrap",
+    "start": "lerna exec --scope rc-ui-lib yarn start",
+    "build": "lerna exec --scope rc-ui-lib yarn build",
+    "build:cli": "lerna exec --scope @rancui/cli yarn build",
+    "build:linter": "lerna exec --scope @rancui/linter yarn build",
+    "build:site": "lerna exec --scope rc-ui-lib yarn build:site",
+    "release:site": "lerna exec --scope rc-ui-lib yarn release:site",
+    "release": "lerna exec --scope rc-ui-lib yarn release",
+    "test": "lerna exec --scope rc-ui-lib yarn test",
+    "clean": "lerna clean -y",
+    "publish": "lerna publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rancui/rc-ui-lib.git"
+  },
+  "devDependencies": {
+    "@rancui/linter": "^1.0.0",
+    "eslint": "^7.32.0",
+    "husky": "4",
+    "lerna": "^4.0.0",
+    "lerna-changelog": "^2.1.0",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.0",
+    "pretty-quick": "^3.1.1",
+    "stylelint": "^13.13.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "rc-cli commit-lint"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,less}": "prettier --write",
+    "*.{ts,tsx,js}": "eslint --fix",
+    "*.{css,less}": "stylelint --fix"
+  },
+  "dependencies": {
+    "@rancui/cli": "^1.0.0"
+  },
+  "version": "1.0.14"
+}
