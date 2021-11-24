@@ -53,12 +53,13 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore cli
-        uses: actions/cache@v2
+        uses: actions/setup-node@v2
         with:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
+          node-version: '16'
 
-      - name: Test
+      - name: Test     
         run: lerna exec --scope rc-ui-lib yarn test
       
       - name: Coverage
