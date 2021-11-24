@@ -30,7 +30,9 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
-
+      - name: whereis node
+        run: whereis node
+        
       - name: Install
         run: yarn bootstrap
   build-cli:
