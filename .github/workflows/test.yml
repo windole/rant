@@ -21,9 +21,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
-      
-      - name: clear cache
-        run: yarn cache clean
 
       - name: Cache lerna
         id: cache
@@ -37,16 +34,12 @@ jobs:
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn bootstrap
-  build-cli:
+  compile-cli:
     name: building cli
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@master
-        with:
-          # codecov.io requires a fetch depth > 1.
-          fetch-depth: 2
-          node-version: '16'
 
       - name: Restore lerna
         uses: actions/cache@v2
@@ -85,20 +78,21 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore cli
-        uses: actions/setup-node@v2
+        uses: actions/cache@v2
         with:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
-          node-version: '16'
+          
       - name: go project
         run: cd /home/runner/work/rant/rant
+        
       - name: add chmod     
         run: chmod -R 777 ./*
     
       - name: Test     
-        run: lerna exec --scope rc-ui-lib node ./node_modules/@rancui/cli/lib/bin test --u --colors --coverage
-      
+        run: lerna exec --scope rc-ui-lib yarn test
+    
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
-    needs: build-cli
+    needs: compile-cli
 
