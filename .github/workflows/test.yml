@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
+      
+      - name: clear cache
+        run: rm -rf node_modules/ && npm i
 
       - name: Cache lerna
         id: cache
