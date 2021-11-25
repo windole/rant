@@ -32,6 +32,7 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
         
       - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
         run: yarn bootstrap
   test:
     name: Testing and Coverage
@@ -57,11 +58,9 @@ jobs:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
           node-version: '16'
-      - name: unlink node 
-        run: chmod 777 rc-cli
         
       - name: Test     
-        run: yarn test
+        run: sudo yarn test
       
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
