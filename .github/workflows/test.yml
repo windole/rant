@@ -52,6 +52,12 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
+      
+      - name: Cache cli
+        uses: actions/cache@v2
+        with:
+          path: packages/rc-cli/lib
+          key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: build
         run: yarn build:cli
