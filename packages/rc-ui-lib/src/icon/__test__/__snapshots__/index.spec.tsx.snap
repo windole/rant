@@ -2,6 +2,8 @@
 
 exports[`Icon should render badge correctly 1`] = `"<div class=\\"rc-badge rc-badge--fixed\\">9</div>"`;
 
+exports[`Icon should render customer iconfont correctly 1`] = `"<i class=\\"rc-badge__wrapper van-icon van-icon-cuIcon-classify\\" style=\\"color: rgb(244, 67, 54);\\"><svg width=\\"1em\\" height=\\"1em\\" fill=\\"currentColor\\"><use xlink:href=\\"#cuIcon-classify\\"></use></svg></i>"`;
+
 exports[`Icon should render default slot correctly 1`] = `"<i class=\\"rc-badge__wrapper van-icon van-icon-success\\">Default Slot</i>"`;
 
 exports[`Icon should render dot correctly 1`] = `"<div class=\\"rc-badge rc-badge--dot rc-badge--fixed\\"></div>"`;

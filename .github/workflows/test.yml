@@ -82,12 +82,6 @@ jobs:
         with:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
-          
-      - name: go project
-        run: cd /home/runner/work/rant/rant
-        
-      - name: add chmod     
-        run: chmod -R 777 ./*
     
       - name: Test     
         run: lerna exec --scope rc-ui-lib yarn test
