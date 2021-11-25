@@ -34,6 +34,29 @@ jobs:
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn bootstrap
+  build-cli:
+    name: building cli
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+        with:
+          # codecov.io requires a fetch depth > 1.
+          fetch-depth: 2
+          node-version: '16'
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
+
+      - name: build
+        run: yarn build:cli
+    
+    needs: setup
   test:
     name: Testing and Coverage
     runs-on: ubuntu-latest
@@ -66,5 +89,5 @@ jobs:
       
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
-    needs: setup
+    needs: build-cli
 
