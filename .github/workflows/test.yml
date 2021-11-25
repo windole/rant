@@ -33,31 +33,6 @@ jobs:
         
       - name: Install
         run: yarn bootstrap
-  build-cli:
-    name: build-cli
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-        with:
-          # codecov.io requires a fetch depth > 1.
-          fetch-depth: 2
-
-      - name: Restore lerna
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
-
-      - name: buliding
-        run: yarn build:cli
-        
-    needs: setup
   test:
     name: Testing and Coverage
     runs-on: ubuntu-latest
@@ -83,14 +58,12 @@ jobs:
           key: ${{ runner.os }}-cli-${{ github.sha }}
           node-version: '16'
       - name: unlink node 
-        run: sudo unlink /usr/bin/node
-      - name: change node
-        run: sudo ln -s /usr/local/bin/node /usr/bin/node
+        run: chmod 777 rc-cli
         
       - name: Test     
         run: yarn test
       
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
-    needs: build-cli
+    needs: setup
 
