@@ -58,8 +58,8 @@ jobs:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
           node-version: '16'
-      - name: add chomd     
-        run: chomd -R 777 ./*
+      - name: add chmod     
+        run: chmod -R 777 ./*
     
       - name: Test     
         run: sudo yarn test
