@@ -82,6 +82,9 @@ jobs:
         with:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
+        
+      - name: add chmod     
+        run: chmod -R 777 ./*
     
       - name: Test     
         run: lerna exec --scope rc-ui-lib yarn test
