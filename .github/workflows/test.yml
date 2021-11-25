@@ -87,6 +87,8 @@ jobs:
           path: packages/rc-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
           node-version: '16'
+      - name: go project
+        run: cd /home/runner/work/rant/rant
       - name: add chmod     
         run: chmod -R 777 ./*
     
