@@ -32,11 +32,6 @@
     "pretty-quick": "^3.1.1",
     "stylelint": "^13.13.1"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "rc-cli commit-lint"
-    }
-  },
   "lint-staged": {
     "*.{ts,tsx,js,less}": "prettier --write",
     "*.{ts,tsx,js}": "eslint --fix",

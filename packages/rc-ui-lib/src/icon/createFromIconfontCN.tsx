@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: pengjin
+ * @Date: 2021-11-25 11:46:46
+ * @LastEditors: pengjin
+ * @LastEditTime: 2021-11-25 11:46:53
+ */
 import React, { FunctionComponent, ReactNode } from 'react';
 import { IconProps } from './PropsType';
 import Icon from './Icon';
