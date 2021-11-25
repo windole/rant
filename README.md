@@ -3,6 +3,11 @@
 <p align="center">参照 <a href="https://github.com/youzan/vant">Vant</a> 打造的 React 框架移动端组件库。</p>
 
 <p align="center">
+  <img src="https://img.shields.io/github/workflow/status/windole/rant/CI" />
+  <img src="https://img.shields.io/codecov/c/github/windole/rant/master.svg?style=flat-square&color=#4fc08d" alt="Coverage Status" />
+</p>
+
+<p align="center">
   🌈 <a href="https://rancui.github.io/rc-ui-lib/">文档网站（GitHub）</a>
 </p>
 
