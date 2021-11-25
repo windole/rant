@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@master
       
       - name: clear cache
-        run: rm -rf node_modules/ && npm i
+        run: yarn cache clean
 
       - name: Cache lerna
         id: cache
@@ -96,7 +96,7 @@ jobs:
         run: chmod -R 777 ./*
     
       - name: Test     
-        run: sudo yarn test
+        run: lerna exec --scope rc-ui-lib node ./node_modules/@rancui/cli/lib/bin test --u --colors --coverage
       
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
