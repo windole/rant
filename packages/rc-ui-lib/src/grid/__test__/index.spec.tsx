@@ -10,7 +10,7 @@ describe('Grid', () => {
     wrapper.unmount();
   });
 
-  it('should render square grid with gutter correctly', async () => {
+  it('should render square grid with gutter correctly!', async () => {
     wrapper = mount(
       <Grid square columnNum={2} gutter={10}>
         <Grid.Item />
@@ -21,7 +21,7 @@ describe('Grid', () => {
     expect(toJson(wrapper.html())).toMatchSnapshot();
   });
 
-  it('should render correctly with index prop', async () => {
+  it('should render correctly with index prop!', async () => {
     wrapper = mount(
       <Grid gutter={10} columnNum={4}>
         {Array.from({ length: 8 }, (_, i) => (
