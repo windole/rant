@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flex should render correctly 1`] = `
+<div
+  class="rc-flexbox"
+>
+  <div
+    class="rc-flexitem rc-flexitem--12"
+  >
+    span: 12
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--12"
+  >
+    span: 12
+  </div>
+</div>
+`;
+
+exports[`Flex should render correctly when direction prop is row-reverse 1`] = `
+<div
+  class="rc-flexbox rc-flexbox--row-reverse"
+>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-1
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-2
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-3
+  </div>
+</div>
+`;
+
+exports[`Flex should render correctly when flex prop is decimal 1`] = `
+<div
+  class="rc-flexbox rc-flexbox--align-center"
+>
+  <div
+    class="rc-flexitem"
+    style="flex: 0 0 20px;"
+  >
+    span: 8-1
+  </div>
+  <div
+    class="rc-flexitem"
+    style="flex: 5 5 auto;"
+  >
+    span: 8-2
+  </div>
+</div>
+`;
+
+exports[`Flex should render correctly when gutter prop is array 1`] = `
+<div
+  class="rc-flexbox"
+  style="margin-left: -8px; margin-right: -8px;"
+>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+    style="padding-left: 8px; padding-right: 8px;"
+  >
+    span: 8
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+    style="padding-left: 8px; padding-right: 8px;"
+  >
+    span: 8
+  </div>
+</div>
+`;
+
+exports[`Flex should render correctly when using align prop 1`] = `
+<div
+  class="rc-flexbox rc-flexbox--align-center"
+>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-1
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-2
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-3
+  </div>
+</div>
+`;
+
+exports[`Flex should render correctly when using flex prop 1`] = `
+<div
+  class="rc-flexbox rc-flexbox--align-center"
+>
+  <div
+    class="rc-flexitem"
+    style="flex: 2 2 auto;"
+  >
+    span: 8-1
+  </div>
+  <div
+    class="rc-flexitem"
+    style="flex: 5 5 auto;"
+  >
+    span: 8-2
+  </div>
+</div>
+`;
+
+exports[`Flex should render correctly when using gutter prop 1`] = `
+<div
+  class="rc-flexbox"
+  style="margin-left: -8px; margin-right: -8px;"
+>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+    style="padding-left: 8px; padding-right: 8px;"
+  >
+    span: 8
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+    style="padding-left: 8px; padding-right: 8px;"
+  >
+    span: 8
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+    style="padding-left: 8px; padding-right: 8px;"
+  >
+    span: 8
+  </div>
+</div>
+`;
+
+exports[`Flex should render correctly when using justify prop 1`] = `
+<div
+  class="rc-flexbox rc-flexbox--justify-between"
+>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-1
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-2
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-3
+  </div>
+</div>
+`;
+
+exports[`Flex should render correctly when wrap prop is wrap 1`] = `
+<div
+  class="rc-flexbox rc-flexbox--wrap"
+>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-1
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-2
+  </div>
+  <div
+    class="rc-flexitem rc-flexitem--8"
+  >
+    span: 8-3
+  </div>
+</div>
+`;
