@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs-extra';
-import { consola } from '../common/logger';
+import { readFileSync } from 'fs';
+import { consola } from '../common/logger.js';
 
 const commitRE =
   /^(revert: )?(fix|feat|docs|perf|test|types|style|build|chore|refactor|breaking change)(\(.+\))?: .{1,50}/;

@@ -1,13 +1,13 @@
 module.exports = {
-  setupFiles: ['./tests/setup.js'],
-  setupFilesAfterEnv: ['./tests/setupAfterEnv.ts'],
-  testPathIgnorePatterns: ['/es/', '/lib/', '<rootDir>/node_modules/'],
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['./tests/setupAfterEnv.ts', './tests/setupPointerEvent.ts'],
+  testPathIgnorePatterns: ['/es/', '/lib/', '/node_modules/'],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
-    '!src/hooks/**',
-    '!src/utils/**',
+    '!**/hooks/**',
+    '!**/utils/**',
     '!**/demo/**',
-    '!src/**/PropsType.ts',
-    '!src/**/index.tsx',
+    '!**/**/PropsType.ts',
+    '!**/test/**',
   ],
 };

@@ -6,6 +6,7 @@
 .now
 .env
 .env.*
+.vscode
 
 # npm
 node_modules
@@ -17,8 +18,9 @@ yarn-error.json
 # dist file
 es
 lib
-site
 dist
+packages/rc-ui-lib/site-dist
+packages/rc-ui-lib/**/*.css
 
 # log file
 .changelog
@@ -26,3 +28,6 @@ dist
 # tests
 **/tests/coverage
 changelog.generated.md
+
+# toole
+del.js

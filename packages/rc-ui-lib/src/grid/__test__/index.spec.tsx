@@ -10,7 +10,7 @@ describe('Grid', () => {
     wrapper.unmount();
   });
 
-  it('should render square grid with gutter correctly!', async () => {
+  it('should render square grid with gutter correctly', async () => {
     wrapper = mount(
       <Grid square columnNum={2} gutter={10}>
         <Grid.Item />
@@ -18,10 +18,10 @@ describe('Grid', () => {
         <Grid.Item />
       </Grid>,
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('should render correctly with index prop!', async () => {
+  it('should render correctly with index prop', async () => {
     wrapper = mount(
       <Grid gutter={10} columnNum={4}>
         {Array.from({ length: 8 }, (_, i) => (
@@ -29,7 +29,7 @@ describe('Grid', () => {
         ))}
       </Grid>,
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should change icon size when using icon-size prop', async () => {
@@ -85,7 +85,7 @@ describe('Grid', () => {
         <Grid.Item icon="photo-o" text="hello,world!" />
       </Grid>,
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should render correctly when text prop is ReactNode', async () => {
@@ -94,7 +94,7 @@ describe('Grid', () => {
         <Grid.Item icon="photo-o" text={React.createElement('div', {}, 'world')} />
       </Grid>,
     );
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should render correctly when using iconPrefix prop', async () => {
@@ -152,6 +152,6 @@ describe('Grid', () => {
       </Grid>,
     );
 
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

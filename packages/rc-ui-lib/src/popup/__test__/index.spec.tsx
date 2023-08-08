@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Icon from '../../icon';
+import { Icon } from '../..';
 import { Popup } from '..';
 
 describe('Popup', () => {
@@ -57,10 +57,12 @@ describe('Popup', () => {
   it('should emit close event when visible prop is set to false', async () => {
     const onClickOverlay = jest.fn();
     const onClose = jest.fn();
-    wrapper = mount(<Popup visible onClickOverlay={onClickOverlay} onClose={onClose} />);
+    wrapper = mount(<Popup onClickOverlay={onClickOverlay} onClose={onClose} />);
+    wrapper.setProps({ visible: true });
     const overlay = wrapper.find('.rc-overlay');
     await overlay.simulate('click');
     wrapper.setProps({ visible: false });
+    expect(onClickOverlay).toHaveBeenCalled();
     expect(onClose).toHaveBeenCalled();
   });
 
@@ -94,7 +96,7 @@ describe('Popup', () => {
 
   it('should render correct close icon when using close-icon prop', () => {
     wrapper = mount(<Popup visible closeable closeIcon="success" />);
-    expect(wrapper.find('.rc-popup__close-icon')).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('should render correct close icon when close-icon is JSX element', () => {
@@ -107,9 +109,9 @@ describe('Popup', () => {
     expect(wrapper.find('.rc-popup__title').text()).toEqual('标题');
   });
 
-  it('should render correctly when using descrition prop', () => {
-    wrapper = mount(<Popup visible descrition="descrition" />);
-    expect(wrapper.find('.rc-popup__descrition').text()).toEqual('descrition');
+  it('should render correctly when using description prop', () => {
+    wrapper = mount(<Popup visible description="description" />);
+    expect(wrapper.find('.rc-popup__description').text()).toEqual('description');
   });
 
   it('should change icon class prefix when using icon-prefix prop', () => {
@@ -135,5 +137,12 @@ describe('Popup', () => {
     wrapper = mount(<Popup visible beforeClose={beforeClose} />);
     await wrapper.setProps({ visible: false });
     expect(beforeClose).toHaveBeenCalledTimes(0);
+  });
+
+  it('should not bubble blur event when set preventDefaultMouseDown prop ', async () => {
+    wrapper = mount(<Popup preventDefaultMouseDown visible />);
+    const popupWrapper = wrapper.find('.rc-popup');
+    popupWrapper.simulate('mousedown');
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });

@@ -1,0 +1,145 @@
+@import './var.less';
+
+:root {
+  --rc-dialog-width: @dialog-width;
+  --rc-dialog-small-screen-width: @dialog-small-screen-width;
+  --rc-dialog-font-size: @dialog-font-size;
+  --rc-dialog-transition: @dialog-transition;
+  --rc-dialog-border-radius: @dialog-border-radius;
+  --rc-dialog-background-color: @dialog-background-color;
+  --rc-dialog-header-font-weight: @dialog-header-font-weight;
+  --rc-dialog-header-line-height: @dialog-header-line-height;
+  --rc-dialog-header-padding-top: @dialog-header-padding-top;
+  --rc-dialog-header-isolated-padding: @dialog-header-isolated-padding;
+  --rc-dialog-message-padding: @dialog-message-padding;
+  --rc-dialog-message-font-size: @dialog-message-font-size;
+  --rc-dialog-message-line-height: @dialog-message-line-height;
+  --rc-dialog-message-max-height: @dialog-message-max-height;
+  --rc-dialog-has-title-message-text-color: @dialog-has-title-message-text-color;
+  --rc-dialog-has-title-message-padding-top: @dialog-has-title-message-padding-top;
+  --rc-dialog-button-height: @dialog-button-height;
+  --rc-dialog-round-button-height: @dialog-round-button-height;
+  --rc-dialog-confirm-button-text-color: @dialog-confirm-button-text-color;
+}
+
+.@{rc-prefix}-dialog {
+  top: 45%;
+  left: 50%;
+  width: var(--rc-dialog-width);
+  overflow: hidden;
+  font-size: var(--rc-dialog-font-size);
+  background-color: var(--rc-dialog-background-color);
+  border-radius: var(--rc-dialog-border-radius);
+  backface-visibility: hidden; // avoid blurry text after scale animation
+  transition: var(--rc-dialog-transition);
+  transition-property: transform, opacity;
+
+  @media (max-width: 321px) {
+    width: var(--rc-dialog-small-screen-width);
+  }
+
+  &__header {
+    padding-top: var(--rc-dialog-header-padding-top);
+    font-weight: var(--rc-dialog-header-font-weight);
+    line-height: var(--rc-dialog-header-line-height);
+    text-align: center;
+
+    &--isolated {
+      padding: var(--rc-dialog-header-isolated-padding);
+    }
+  }
+
+  &__content {
+    &--isolated {
+      display: flex;
+      align-items: center;
+      min-height: 104 * @hd;
+    }
+  }
+
+  &__message {
+    flex: 1;
+    max-height: var(--rc-dialog-message-max-height);
+    padding: 26 * @hd var(--rc-dialog-message-padding);
+    overflow-y: auto;
+    font-size: var(--rc-dialog-message-font-size);
+    line-height: var(--rc-dialog-message-line-height);
+
+    // allow newline character
+    white-space: pre-wrap;
+    text-align: center;
+    word-wrap: break-word;
+    -webkit-overflow-scrolling: touch;
+
+    &--has-title {
+      padding-top: var(--rc-dialog-has-title-message-padding-top);
+      color: var(--rc-dialog-has-title-message-text-color);
+    }
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  &__confirm,
+  &__cancel {
+    flex: 1;
+    height: var(--rc-dialog-button-height);
+    margin: 0;
+    border: 0;
+  }
+
+  &__confirm {
+    &,
+    &:active {
+      color: var(--rc-dialog-confirm-button-text-color);
+    }
+  }
+
+  &--round-button {
+    .@{rc-prefix}-dialog__footer {
+      position: relative;
+      height: auto;
+      padding: var(--rc-padding-xs) var(--rc-padding-lg) var(--rc-padding-md);
+    }
+
+    .@{rc-prefix}-dialog__message {
+      padding-bottom: var(--rc-padding-md);
+      color: var(--rc-text-color);
+    }
+
+    .@{rc-prefix}-dialog__confirm,
+    .@{rc-prefix}-dialog__cancel {
+      height: var(--rc-dialog-round-button-height);
+    }
+
+    .@{rc-prefix}-dialog__confirm {
+      color: var(--rc-white);
+    }
+  }
+
+  &-bounce-enter {
+    transform: translate3d(-50%, -50%, 0) scale(0.7);
+    opacity: 0;
+  }
+
+  &-bounce-exit-active {
+    transform: translate3d(-50%, -50%, 0) scale(0.9);
+    opacity: 0;
+  }
+  &-bounce-enter-active,
+  &-bounce-leave-exit {
+    transform: translate3d(-50%, -50%, 0);
+    opacity: 1;
+  }
+}

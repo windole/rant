@@ -1,0 +1,12 @@
+@import './var.less';
+
+:root {
+  --rc-sticky-z-index: @sticky-z-index;
+}
+
+.@{rc-prefix}-sticky {
+  &--fixed {
+    position: fixed;
+    z-index: var(--rc-sticky-z-index);
+  }
+}

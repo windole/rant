@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import { Icon } from '..';
+
+const IconFont = Icon.createFromIconfontCN('//at.alicdn.com/t/font_2763890_w471tfudy4d.js');
 
 describe('Icon', () => {
   let wrapper;
@@ -50,9 +53,8 @@ describe('Icon', () => {
     expect(wrapper.getDOMNode().style.fontSize).toEqual('20px');
   });
 
-  it('should render customer iconfont correctly', () => {
-    const IconFont = Icon.createFromIconfontCN('//at.alicdn.com/t/font_2763890_w471tfudy4d.js');
+  it('should render correctly when createFromIconfontCN', () => {
     wrapper = mount(<IconFont name="cuIcon-classify" color="#f44336" />);
-    expect(wrapper.html()).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

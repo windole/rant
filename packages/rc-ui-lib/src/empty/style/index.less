@@ -1,0 +1,43 @@
+@import './var.less';
+
+:root {
+  --rc-empty-padding: @empty-padding;
+  --rc-empty-image-size: @empty-image-size;
+  --rc-empty-description-margin-top: @empty-description-margin-top;
+  --rc-empty-description-padding: @empty-description-padding;
+  --rc-empty-description-color: @empty-description-color;
+  --rc-empty-description-font-size: @empty-description-font-size;
+  --rc-empty-description-line-height: @empty-description-line-height;
+  --rc-empty-bottom-margin-top: @empty-bottom-margin-top;
+}
+
+.@{rc-prefix}-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--rc-empty-padding);
+
+  &__image {
+    width: var(--rc-empty-image-size);
+    height: var(--rc-empty-image-size);
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__description {
+    margin-top: var(--rc-empty-description-margin-top);
+    padding: var(--rc-empty-description-padding);
+    color: var(--rc-empty-description-color);
+    font-size: var(--rc-empty-description-font-size);
+    line-height: var(--rc-empty-description-line-height);
+  }
+
+  &__bottom {
+    margin-top: var(--rc-empty-bottom-margin-top);
+  }
+}

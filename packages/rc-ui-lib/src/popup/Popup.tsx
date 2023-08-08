@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import React, {
   useMemo,
   useState,
@@ -7,7 +6,6 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useContext,
-  CSSProperties,
 } from 'react';
 import classnames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
@@ -21,7 +19,6 @@ import { isDef } from '../utils';
 import { PopupInstanceType, PopupProps } from './PropsType';
 import { callInterceptor } from '../utils/interceptor';
 import { renderToContainer } from '../utils/dom/renderToContainer';
-import useSsrCompat from '../hooks/use-ssr-compat';
 import ConfigProviderContext from '../config-provider/ConfigProviderContext';
 import PopupContext from './PopupContext';
 
@@ -48,105 +45,93 @@ export const sharedPopupProps = [
   'beforeClose',
 ] as const;
 
+let globalZIndex = 2000;
+
 const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   const { prefixCls, createNamespace } = useContext(ConfigProviderContext);
   const [bem] = createNamespace('popup', prefixCls);
 
-  const {
-    style,
-    round,
-    visible,
-    closeable,
-    title,
-    descrition,
-    children,
-    closeIcon,
-    position,
-    onClickOverlay,
-    closeOnClickOverlay,
-    onOpen,
-    beforeClose,
-    onClose,
-    onClickCloseIcon,
-    teleport,
-  } = props;
-  const opened = useRef<boolean>(false);
+  const { round, visible, closeable, title, description, children, duration, closeIcon, position } =
+    props;
+  const opened = useRef(false);
+  const zIndex = useRef<number>(props.zIndex ?? globalZIndex);
   const popupRef = useRef<HTMLDivElement>();
-  const popupZIndex = useRef<number>(2000);
-  const [ssrCompatRender, rendered] = useSsrCompat();
+  const [animatedVisible, setAnimatedVisible] = useState(visible);
 
-  const popupStyle = useMemo(() => {
-    const initStyle: CSSProperties = {
-      ...style,
+  const style = useMemo(() => {
+    const initStyle = {
+      zIndex: zIndex.current,
+      ...props.style,
     };
 
     if (isDef(props.duration)) {
-      const key = position === 'center' ? 'animationDuration' : 'transitionDuration';
+      const key = props.position === 'center' ? 'animationDuration' : 'transitionDuration';
       initStyle[key] = `${props.duration}ms`;
     }
-
     return initStyle;
-  }, [JSON.stringify(style), props.duration]);
+  }, [zIndex.current, props.style, props.duration]);
 
   const open = () => {
-    if (!opened.current) {
-      opened.current = true;
-      onOpen?.();
-    }
+    zIndex.current = props.zIndex !== undefined ? +props.zIndex : globalZIndex++;
+    opened.current = true;
+    props.onOpen?.();
   };
 
   const close = () => {
     if (opened.current) {
       callInterceptor({
-        interceptor: beforeClose,
+        interceptor: props.beforeClose,
         args: ['close'],
         done: () => {
           opened.current = false;
-          onClose?.();
+          props.onClose?.();
         },
       });
     }
   };
 
-  const handleClickOverlay = (event) => {
-    onClickOverlay?.(event);
-    if (closeOnClickOverlay) {
+  const onClickOverlay = (event) => {
+    props.onClickOverlay?.(event);
+
+    if (props.closeOnClickOverlay) {
       close();
     }
   };
 
   const renderOverlay = () => {
-    const { overlay, overlayClass, overlayStyle } = props;
-    if (overlay) {
+    if (props.overlay) {
       return (
         <Overlay
           visible={visible}
-          className={overlayClass}
-          customStyle={overlayStyle}
-          zIndex={popupZIndex.current}
-          duration={props.duration}
-          onClick={handleClickOverlay}
+          lockScroll={props.lockScroll}
+          className={props.overlayClass}
+          customStyle={props.overlayStyle}
+          zIndex={zIndex.current}
+          duration={duration}
+          onClick={onClickOverlay}
         />
       );
     }
     return null;
   };
 
-  const handleClickCloseIcon = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    onClickCloseIcon?.(e);
+  const onClickCloseIcon = (e) => {
+    if (props.onClickCloseIcon) {
+      props.onClickCloseIcon(e);
+    }
     close();
   };
 
   const renderCloseIcon = () => {
     if (closeable) {
-      const { closeIconPosition, iconPrefix } = props;
-      if (closeIcon && typeof closeIcon === 'string') {
+      const { closeIconPosition } = props;
+      if (typeof closeIcon === 'string') {
         return (
           <Icon
             name={closeIcon}
             className={classnames(bem('close-icon', closeIconPosition))}
-            classPrefix={iconPrefix}
-            onClick={handleClickCloseIcon}
+            classPrefix={props.iconPrefix}
+            onClick={onClickCloseIcon}
           />
         );
       }
@@ -170,34 +155,35 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   };
 
   const renderDescrition = () => {
-    if (descrition) {
-      return <div className={classnames(bem('descrition'))}>{descrition}</div>;
+    if (description) {
+      return <div className={classnames(bem('description'))}>{description}</div>;
     }
     return null;
   };
 
-  const handleClick = (e) => {
-    props.onClick?.(e);
-  };
-
   const renderPopup = () => {
+    const { safeAreaInsetBottom } = props;
     return (
       <div
         ref={popupRef}
         style={{
-          zIndex: popupZIndex.current,
-          ...popupStyle,
-          display: !visible ? 'none' : undefined,
+          ...style,
+          display: !animatedVisible ? 'none' : undefined,
         }}
         className={classnames(
-          props.className,
           bem({
             round,
             [position]: position,
           }),
-          { 'rc-safe-area-bottom': props.safeAreaInsetBottom },
+          { 'rc-safe-area-bottom': safeAreaInsetBottom },
+          props.className,
         )}
-        onClick={handleClick}
+        onClick={props.onClick}
+        onMouseDown={(e) => {
+          if (props.preventDefaultMouseDown) {
+            e.preventDefault();
+          }
+        }}
       >
         {renderTitle()}
         {renderDescrition()}
@@ -208,12 +194,14 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
   };
 
   const renderTransition = () => {
-    const { transition, destroyOnClose, duration, mountOnEnter, onClosed, onOpened } = props;
-    const name = position === 'center' ? 'rc-fade' : `rc-popup-slide-${position}`;
+    const { transition, destroyOnClose, mountOnEnter } = props;
+    const name =
+      position === 'center' ? `${prefixCls}-fade` : `${prefixCls}-popup-slide-${position}`;
+
     return (
       <CSSTransition
         in={visible}
-        appear
+        nodeRef={popupRef}
         timeout={{
           exit: duration,
         }}
@@ -221,9 +209,10 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
         mountOnEnter={!mountOnEnter}
         unmountOnExit={destroyOnClose}
         onEnter={open}
-        onEntered={onOpened}
+        onEntered={props.onOpened}
         onExited={() => {
-          onClosed?.();
+          setAnimatedVisible(false);
+          props.onClosed?.();
         }}
       >
         {renderPopup()}
@@ -241,12 +230,8 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
 
   useEffect(() => {
     if (visible) {
-      if (popupRef.current) {
-        const curIndex = +window.getComputedStyle(popupRef.current, null)?.zIndex;
-        if (isDef(curIndex)) {
-          popupZIndex.current++;
-        }
-      }
+      opened.current = true;
+      setAnimatedVisible(true);
     }
   }, [visible]);
 
@@ -254,26 +239,27 @@ const Popup = forwardRef<PopupInstanceType, PopupProps>((props, ref) => {
     popupRef,
   }));
 
-  return ssrCompatRender(() =>
-    renderToContainer(
-      teleport,
-      <PopupContext.Provider value={{ visible }}>
-        {renderOverlay()}
-        {renderTransition()}
-      </PopupContext.Provider>,
-    ),
+  return renderToContainer(
+    props.teleport,
+    <PopupContext.Provider value={{ visible }}>
+      {renderOverlay()}
+      {renderTransition()}
+    </PopupContext.Provider>,
   );
 });
 
 Popup.defaultProps = {
-  mountOnEnter: true,
+  duration: 300,
   overlay: true,
   lockScroll: true,
   position: 'center',
   closeIcon: 'cross',
   closeIconPosition: 'top-right',
   closeOnClickOverlay: true,
+  preventDefaultMouseDown: false,
   teleport: () => document.body,
 };
+
 Popup.displayName = 'Popup';
+
 export default Popup;

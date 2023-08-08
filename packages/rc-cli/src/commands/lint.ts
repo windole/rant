@@ -1,6 +1,6 @@
 import execa from 'execa';
-import { ora } from '../common/logger';
-import { SCRIPT_EXTS } from '../common/constant';
+import { ora } from '../common/logger.js';
+import { SCRIPT_EXTS } from '../common/constant.js';
 
 type RunCommandMessages = {
   start: string;
@@ -34,15 +34,11 @@ function eslint() {
 }
 
 function stylelint() {
-  return runCommand(
-    'stylelint',
-    ['src/**/*.css', 'src/**/*.vue', 'src/**/*.less', 'src/**/*.sass', '--fix'],
-    {
-      start: 'Running stylelint...',
-      succeed: 'Stylelint Passed.',
-      failed: 'Stylelint failed!',
-    },
-  );
+  return runCommand('stylelint', ['src/**/*.css', 'src/**/*.less', 'src/**/*.sass', '--fix'], {
+    start: 'Running stylelint...',
+    succeed: 'Stylelint Passed.',
+    failed: 'Stylelint failed!',
+  });
 }
 
 export async function lint() {

@@ -1,0 +1,63 @@
+@import './var.less';
+
+:root {
+  --rc-image-placeholder-text-color: @image-placeholder-text-color;
+  --rc-image-placeholder-font-size: @image-placeholder-font-size;
+  --rc-image-placeholder-background-color: @image-placeholder-background-color;
+  --rc-image-loading-icon-size: @image-loading-icon-size;
+  --rc-image-loading-icon-color: @image-loading-icon-color;
+  --rc-image-error-icon-size: @image-error-icon-size;
+  --rc-image-error-icon-color: @image-error-icon-color;
+}
+
+.@{rc-prefix}-image {
+  position: relative;
+  display: inline-block;
+
+  &--block {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--round {
+    overflow: hidden;
+    border-radius: var(--rc-border-radius-max);
+
+    .@{rc-prefix}-image__img {
+      border-radius: inherit;
+    }
+  }
+
+  &__img,
+  &__error,
+  &__loading {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__error,
+  &__loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--rc-image-placeholder-text-color);
+    font-size: var(--rc-image-placeholder-font-size);
+    background-color: var(--rc-image-placeholder-background-color);
+  }
+
+  &__loading-icon {
+    color: var(--rc-image-loading-icon-color);
+    font-size: var(--rc-image-loading-icon-size);
+  }
+
+  &__error-icon {
+    color: var(--rc-image-error-icon-color);
+    font-size: var(--rc-image-error-icon-size);
+  }
+}

@@ -1,5 +1,9 @@
 # 更新日志
 
+### 介绍
+
+rc-ui-lib 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范。
+
 ### 提示
 
 当前文档为 rc-ui-lib 的更新日志
@@ -11,6 +15,190 @@
 - 主版本号：无固定的发布时间，包含不兼容更新和重大功能更新。
 
 ## 更新内容
+
+### [2.0.5](https://github.com/rancui/rc-ui-lib/compare/v2.0.4...v2.0.5)
+
+`2023-08-04`
+
+**Bug Fixes**
+
+- PasswordInput： 修复组件阻止默认事件问题
+- DateTimePicker：修改 atePicker 中 confirm 时拿不到最新值的问题
+
+### [2.0.4](https://github.com/rancui/rc-ui-lib/compare/v2.0.3...v2.0.4)
+
+`2023-07-28`
+
+**Bug Fixes**
+
+- DateTimePicker: useRefState hook 判断逻辑的调整 以及 修复设置 value 无效问题
+
+**Features**
+
+- DateTimePicker: 新增清空输入框 ref 函数
+
+### [2.0.3](https://github.com/rancui/rc-ui-lib/compare/v2.0.2...v2.0.3)
+
+`2023-06-20` **Features**
+
+- PasswordInput: 新增可清空输入框内容的 ref 函数 ([24a5331](https://github.com/rancui/rc-ui-lib/commit/24a53317f5000accf65854284ec01f5492b28540))
+
+### [2.0.2](https://github.com/rancui/rc-ui-lib/compare/v2.0.1...v2.0.2)
+
+`2023-06-14` **Features**
+
+- DateTimePicker: 新增嵌套功能、添加 stopPropagation 属性([4dd65dd](https://github.com/rancui/rc-ui-lib/commit/4dd65dd73de8eaaa61c42f569279bb82e8a331ec))
+
+### [2.0.1](https://github.com/rancui/rc-ui-lib/compare/v1.3.6...v2.0.0)
+
+`2023-04-25` **Bug Fixes**
+
+- DateTimePicker: 修复级联选择选项没有刷新的问题
+
+### [2.0.0](https://github.com/rancui/rc-ui-lib/compare/v1.3.6...v2.0.0)
+
+`2023-03-08` **Features**
+
+- 新增 TextEllipsis 组件
+
+### [1.3.6](https://github.com/rancui/rc-ui-lib/compare/v1.3.5...v1.3.6)
+
+`2022-11-23` **Bug Fixes**
+
+- Form: 修复 Field 组件中 onChange 事件无法触发的问题
+
+### [1.3.5](https://github.com/rancui/rc-ui-lib/compare/v1.3.4...v1.3.5)
+
+`2022-11-22`
+
+- 新增 CountDown 倒计时组件([831e59f](https://github.com/rancui/rc-ui-lib/commit/831e59f1062f6d591bd7d3e690b9b6315b0b4770))
+
+- 新增 Progress 进度条组件([41ca9f4](https://github.com/rancui/rc-ui-lib/commit/41ca9f483a4a9b707a263dc63e4b70073b91f9c9))
+
+### [1.3.4](https://github.com/rancui/rc-ui-lib/compare/v1.3.3...v1.3.4)
+
+`2022-06-27`
+
+**Bug Fixes**
+
+- 显性增加 children 属性，修复部分场景出错([829569d](https://github.com/rancui/rc-ui-lib/commit/829569df7479b7b6967b55b8d4e557424d69fece))
+
+### [1.3.3](https://github.com/rancui/rc-ui-lib/compare/v1.3.1...v1.3.3)
+
+`2022-06-13`
+
+**Bug Fixes**
+
+- Swiper: 修复 height 导致的显示异常 ([28b1906](https://github.com/rancui/rc-ui-lib/commit/28b1906f6bb054156acfd4e6a4d5072c979c692a))
+
+- Collapse: children 设为可选 ([34afa91](https://github.com/rancui/rc-ui-lib/commit/34afa91792ccddb94f1ddc14df8e49ebe0c3305f))
+
+### [v1.3.1](https://github.com/rancui/rc-ui-lib/compare/v1.3.0...v1.3.1)
+
+`2022-02-20`
+
+**Features**
+
+- DateTimePicker: 自定义 indicator 颜色 ([da1277a](https://github.com/rancui/rc-ui-lib/commit/64f424b37b96cedcb3c17bd25e9d603c5da1277a))
+
+### [v1.3.0](https://github.com/rancui/rc-ui-lib/compare/v1.2.0...v1.3.0)
+
+`2022-02-20`
+
+**Features**
+
+- 新增 DateTimePicker 组件 ([d643ff2](https://github.com/rancui/rc-ui-lib/commit/1be03ab3d06c008a137824a6e21c31acdd643ff2))
+
+### [v1.2.0](https://github.com/rancui/rc-ui-lib/compare/v1.1.0...v1.2.0)
+
+`2022-01-29`
+
+**Bug Fixes**
+
+- Popup: 修改 是否阻止 onMouseDown 事件 ([#36](https://github.com/rancui/rc-ui-lib/issues/36))
+
+**Features**
+
+- 新增 Calendar 组件 ([b6a256c](https://github.com/rancui/rc-ui-lib/commit/b6a256cb457291220850761292bd21c34912f1d0))
+- 新增 Lazyload 组件 ([6426d1c](https://github.com/rancui/rc-ui-lib/commit/6426d1ce03a86b608f7a4c5d5dc0e7a8dadcfe0c))
+- 新增 Picker 组件 ([0ed372c](https://github.com/rancui/rc-ui-lib/commit/0ed372ca08e0bcbccd9b98d26be38f4e50771fef))
+- 新增 Popover 组件 ([34739bf](https://github.com/rancui/rc-ui-lib/commit/34739bf705347270ce8e2463a9d71f45fac6060d))
+
+### [v1.1.0](https://github.com/rancui/rc-ui-lib/compare/v1.0.1...v1.1.0)
+
+`2022-01-11`
+
+**Features**
+
+- Popup: 新增 onMouseDown 事件，防止 onBlur 事件冒泡 ([5647f3f](https://github.com/rancui/rc-ui-lib/commit/5647f3faa583045e75d717ed58aec95407c30167))
+- 新增 Sidebar 组件 ([e19838e](https://github.com/rancui/rc-ui-lib/commit/e19838ee23d998f4b0e81ba627047c892fa806a4))
+- 新增 SwipeCell 组件 ([845b25d](https://github.com/rancui/rc-ui-lib/commit/845b25d81b24c0d25a8c3f7aff735e7256dcbf65))
+- 新增 NumberKeyboard 组件 ([cc3eb5d](https://github.com/rancui/rc-ui-lib/commit/cc3eb5ddce1062ca72ee1adbf5212c5aa606c263))
+- 新增 PasswordInput 组件 ([f89d842](https://github.com/rancui/rc-ui-lib/commit/f89d842de239f4f35a963a6239d1ddf9087ed6cc))
+
+### [v1.0.0](https://github.com/rancui/rc-ui-lib/compare/v0.3.0...v1.0.0)
+
+`2021-12-27`
+
+**Bug Fixes**
+
+- List: 修复错误重新加载不触发 bug ([9644a30](https://github.com/rancui/rc-ui-lib/commit/9644a30050963b83091f97663420920bcd7fdffb))
+- Cascader: 修复销毁组件后仍然 setData 的问题 ([feafcfe](https://github.com/rancui/rc-ui-lib/commit/feafcfe8ab6ba593ef569a0195db9a454a48b0b9))
+- StepsItem: 修复在非激活状态标题的字体颜色 bug ([55e587f](https://github.com/rancui/rc-ui-lib/commit/55e587fc942ea2cf6d26ccf94d6ed7798fe347c2))
+- imagePreview: 修复组件关闭报错 bug ([059f6a1](https://github.com/rancui/rc-ui-lib/commit/059f6a1d90890540acfccffb5cd76a564982ec4d))
+
+**Feature**
+
+- 完成全部 42 个组件功能的查缺补漏及单元测试，测试覆盖率超过 96%。
+
+### [v0.3.0](https://github.com/rancui/rc-ui-lib/compare/v0.2.5...v0.3.0)
+
+`2021-12-08`
+
+**Feature**
+
+- 新增 Swiper 组件[a91908](https://github.com/rancui/rc-ui-lib/commit/a91908ba478294fd8204e86dd061a663a8248955)
+
+### [v0.2.5](https://github.com/rancui/rc-ui-lib/compare/v0.2.4...v0.2.5)
+
+`2021-12-03`
+
+**Bug Fixes**
+
+- Popup： 修复 visibl 初始值为 true 时,点击 overlay 或 closeIcon 关闭不了 [211680](https://github.com/rancui/rc-ui-lib/commit/21168035996381d3bea28bc4f39d11b253931238)
+
+### [v0.2.3](https://github.com/rancui/rc-ui-lib/compare/v0.2.2...v0.2.3)
+
+`2021-12-02`
+
+**Perf**
+
+- Slider: 优化 Slider 组件代码, 并显性增加 onTouchMove 事件。[2d6fc4](https://github.com/rancui/rc-ui-lib/commit/2d6fc48986a70ad9111e85bbca2502082a9b1c4a)
+
+### [v0.2.2](https://github.com/rancui/rc-ui-lib/compare/v0.2.1...v0.2.2)
+
+`2021-12-01`
+
+**Bug Fixes**
+
+- Toast: 允许同时存在多个 Toast，当 toast = Toast({ onClose }) 且 toast.clear() 时 onClose 被调用两次 [85e808](https://github.com/rancui/rc-ui-lib/commit/85e808c69df4c0f2ee801ca08638aac2cb61610a)
+
+### [v0.2.1](https://github.com/rancui/rc-ui-lib/compare/v0.2.0...v0.2.1)
+
+`2021-12-01`
+
+**Perf**
+
+- Rate: 提升 touchmove 时被选中/取消的流畅度 [ff412f](https://github.com/rancui/rc-ui-lib/commit/ff412fe469d039492a57fd355fcbf46be62fb75a)
+
+### [v0.2.0](https://github.com/rancui/rc-ui-lib/compare/v0.1.59...v0.2.0)
+
+`2021-11-26`
+
+**Bug Fixes**
+
+- Image: onError 方法中 props.onLoad 改成 props.onError [3138a5](https://github.com/rancui/rc-ui-lib/commit/3138a515763d14826c83e63372d2f0511c8b249c)
+- Popup: 修复在 iOS 13 中 Transition 被触发两次 [3fc1a8](https://github.com/rancui/rc-ui-lib/commit/3fc1a83cb942cf83b3a302374e8cba96fc2e1fbf)
 
 ### [v0.1.59](https://github.com/rancui/rc-ui-lib/compare/v0.1.58...v0.1.59)
 

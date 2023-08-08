@@ -1,0 +1,86 @@
+@import './var.less';
+
+:root {
+  --rc-action-bar-background-color: @action-bar-background-color;
+  --rc-action-bar-height: @action-bar-height;
+  --rc-action-bar-button-height: @action-bar-button-height;
+  --rc-action-bar-button-warning-color: @action-bar-button-warning-color;
+  --rc-action-bar-button-danger-color: @action-bar-button-danger-color;
+  --rc-action-bar-icon-width: @action-bar-icon-width;
+  --rc-action-bar-icon-height: @action-bar-icon-height;
+  --rc-action-bar-icon-color: @action-bar-icon-color;
+  --rc-action-bar-icon-size: @action-bar-icon-size;
+  --rc-action-bar-icon-font-size: @action-bar-icon-font-size;
+  --rc-action-bar-icon-active-color: @action-bar-icon-active-color;
+  --rc-action-bar-icon-text-color: @action-bar-icon-text-color;
+  --rc-action-bar-icon-background-color: @action-bar-icon-background-color;
+}
+
+.@{rc-prefix}-action-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  box-sizing: content-box;
+  height: var(--rc-action-bar-height);
+  background-color: var(--rc-action-bar-background-color);
+}
+
+.@{rc-prefix}-action-bar-button {
+  flex: 1;
+  height: var(--rc-action-bar-button-height);
+  font-weight: var(--rc-font-weight-bold);
+  font-size: var(--rc-font-size-md);
+  border: none;
+  border-radius: 0;
+
+  &--first {
+    margin-left: 5 * @hd;
+    border-top-left-radius: var(--rc-border-radius-max);
+    border-bottom-left-radius: var(--rc-border-radius-max);
+  }
+
+  &--last {
+    margin-right: 5 * @hd;
+    border-top-right-radius: var(--rc-border-radius-max);
+    border-bottom-right-radius: var(--rc-border-radius-max);
+  }
+
+  &--warning {
+    background: var(--rc-action-bar-button-warning-color);
+  }
+
+  &--danger {
+    background: var(--rc-action-bar-button-danger-color);
+  }
+
+  @media (max-width: 321px) {
+    font-size: 13 * @hd;
+  }
+}
+
+.@{rc-prefix}-action-bar-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: var(--rc-action-bar-icon-width);
+  height: var(--rc-action-bar-icon-height);
+  color: var(--rc-action-bar-icon-text-color);
+  font-size: var(--rc-action-bar-icon-font-size);
+  line-height: 1;
+  text-align: center;
+  background-color: var(--rc-action-bar-icon-background-color);
+  cursor: pointer;
+
+  &:active {
+    background-color: var(--rc-action-bar-icon-active-color);
+  }
+
+  &__icon {
+    margin: 0 auto var(--rc-padding-base);
+    color: var(--rc-action-bar-icon-color);
+    font-size: var(--rc-action-bar-icon-size);
+  }
+}

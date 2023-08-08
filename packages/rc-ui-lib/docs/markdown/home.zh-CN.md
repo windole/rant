@@ -1,17 +1,16 @@
 ### 介绍
 
-参照 [Vant](https://vant-contrib.gitee.io/vant) 打造的 React 框架移动端组件库。
+参照 [Vant](https://vant-contrib.gitee.io/vant/v3/#/zh-CN) 打造的 React 框架移动端组件库。
 
 ### 特性
 
-- 计划 50+ 高质量组件，覆盖移动端基本场景
+- 50+ 个高质量组件，覆盖移动端各类场景
 - 性能极佳，组件平均体积不到 1kb（min+gzip）
+- 单元测试覆盖率超过 95%，提供稳定性保障
+- 完善的文档和示例
 - 支持按需引入
 - 支持主题定制
 - 支持 TypeScript
-- 完善的文档和示例
-- 支持 SSR
-- 支持 Vite
 
 ### 快速上手
 
