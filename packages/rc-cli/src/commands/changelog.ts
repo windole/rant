@@ -58,6 +58,9 @@ export async function changelog(): Promise<void> {
         preset: 'angular',
         releaseCount: 2,
       },
+      null,
+      null,
+      null,
       {
         mainTemplate,
         headerPartial,
