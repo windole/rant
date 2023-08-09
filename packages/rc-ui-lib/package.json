@@ -1,5 +1,5 @@
 {
-  "name": "rc-ui-lib",
+  "name": "rant",
   "version": "2.0.5",
   "description": "React Mobile UI Components Library base on Vant",
   "main": "lib/index.js",
@@ -23,11 +23,11 @@
     "test": "rc-cli test --u --colors --coverage",
     "test:coverage": "open tests/coverage/index.html"
   },
-  "author": "rancui",
+  "author": "windole",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:rancui/rc-ui-lib.git"
+    "url": "git@github.com:windole/rant.git"
   },
   "publishConfig": {
     "access": "public",
