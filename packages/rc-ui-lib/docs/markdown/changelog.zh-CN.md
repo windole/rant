@@ -16,6 +16,52 @@ rc-ui-lib 遵循 [Semver](https://semver.org/lang/zh-CN/) 语义化版本规范�
 
 ## 更新内容
 
+### [v2.0.7](https://github.com/windole/rant/compare/v2.0.6...v2.0.7)
+
+`2023-08-09`
+### [v2.0.6](https://github.com/windole/rant/compare/6860a8cf72e008e34652ac6be2d3546b4bebb449...v2.0.6)
+
+`2023-08-09`
+
+**Bug Fixes**
+
+- 修改test workflow [350688](https://github.com/windole/rant/commit/3506887a589cf1ad513417ec5d0f072d542b1294)
+- delete snap [09ca90](https://github.com/windole/rant/commit/09ca908bc6c22044b1c57e05e79671b996875ac1)
+
+**Document**
+
+- 更新README [519458](https://github.com/windole/rant/commit/5194581ae2773cb008cfb6d3e7632db0bd01b660)
+- update shields [47d749](https://github.com/windole/rant/commit/47d749d880a7949a0b78326ef3919c5e27821fda)
+
+- Update test.yml [866808](https://github.com/windole/rant/commit/866808507693bc47f9f0d8cf8c3e991149ac6aba)
+- Update test.yml [3eedbe](https://github.com/windole/rant/commit/3eedbee96e5f0ab47eba3bd036a9b0ee3689e8f5)
+- Update test.yml [ec8de1](https://github.com/windole/rant/commit/ec8de11df4a87a13b8de86b647f98951047699c5)
+- Update test.yml [ea1aec](https://github.com/windole/rant/commit/ea1aec558fa66b56c42c0dcde5711643cbe909f0)
+- Update test.yml [71f1ad](https://github.com/windole/rant/commit/71f1add589f580054f20d5f0991a6581561c2f67)
+- Update test.yml [2ff838](https://github.com/windole/rant/commit/2ff838fbb2e1a1f9e0a094e650a11a85b0d46586)
+- Update test.yml [398d3d](https://github.com/windole/rant/commit/398d3d6ab774f4864f5b4c9f83a18011220a276c)
+- Update test.yml [c32cb0](https://github.com/windole/rant/commit/c32cb0b1362a94ceb04584ac1e61939868afa019)
+- Update test.yml [7f1bc9](https://github.com/windole/rant/commit/7f1bc93393eac0f2027f285260a6017904fffcd5)
+- Update test.yml [308e74](https://github.com/windole/rant/commit/308e74ef2a70b52da4ba82aef6278d9508f2f4f3)
+- Update test.yml [11aeab](https://github.com/windole/rant/commit/11aeabdb6bd6d336c08b48e1610fa47550d9a57d)
+- Update test.yml [29e9bd](https://github.com/windole/rant/commit/29e9bddf30ed87305ec04698cc12579b025473b5)
+- Update test.yml [8b6a82](https://github.com/windole/rant/commit/8b6a827679d9304b308382ebca1b609150919597)
+- Update test.yml [347dae](https://github.com/windole/rant/commit/347daed7b225bb89f12f611765937dfbf7b849e5)
+- Update test.yml [dac1e5](https://github.com/windole/rant/commit/dac1e59e6375e0f713b433821cd906ebba7f1c2c)
+- Update test.yml [7f3b8e](https://github.com/windole/rant/commit/7f3b8ebbf683ea6e30b0e97c0cf07465fd6fec07)
+- Update test.yml [a86d1e](https://github.com/windole/rant/commit/a86d1ed8114a03afb4d987c853ed213460b8813b)
+- Update test.yml [b1550b](https://github.com/windole/rant/commit/b1550b98c5ac8ec241f805c3bdd5a6975b69973a)
+- Update test.yml [1fb0c5](https://github.com/windole/rant/commit/1fb0c58172c935853316e0380bba032c987e51fc)
+- Update test.yml [5c71ce](https://github.com/windole/rant/commit/5c71ced60ba7783d05641a389db51652e337b270)
+- Create test.yml [6860a8](https://github.com/windole/rant/commit/6860a8cf72e008e34652ac6be2d3546b4bebb449)
+
+**Feature**
+
+- 删除不校验代码 [479209](https://github.com/windole/rant/commit/479209ae4b986adb7c7326eeef5bd037d4a4da3b)
+- 添加弹窗组件 [969870](https://github.com/windole/rant/commit/969870d28237cffee39194e62dbe2b6338ab0ea0)
+- add flex component [ad9e08](https://github.com/windole/rant/commit/ad9e084e2d970febc36d860e987b65ead32104ed)
+- add Grid [200a53](https://github.com/windole/rant/commit/200a53d256e1aeb58615e4292b5d14750085e533)
+
 ### [2.0.5](https://github.com/rancui/rc-ui-lib/compare/v2.0.4...v2.0.5)
 
 `2023-08-04`
